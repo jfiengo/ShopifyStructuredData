@@ -1,0 +1,29 @@
+# Core dependencies
+requests>=2.31.0
+beautifulsoup4>=4.12.2
+click>=8.1.7
+rich>=13.6.0
+python-dotenv>=1.0.0
+pydantic>=2.4.2
+PyYAML>=6.0.1
+
+# AI features (optional)
+openai>=1.3.0
+
+# Web interface
+flask>=2.3.3
+flask-cors>=4.0.0
+
+# Database
+sqlite3  # Built into Python
+
+# Development and testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.5.0
+
+# Documentation
+mkdocs>=1.5.0
+mkdocs-material>=9.0.0
