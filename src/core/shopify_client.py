@@ -41,23 +41,31 @@ class ShopifyClient:
     
     def _make_request(self, method: str, endpoint: str, **kwargs) -> Dict:
         """Make a request to the Shopify API with error handling"""
-        url = urljoin(self.config.base_url, endpoint)
+        
+        # Ensure proper URL building 
+        if not endpoint.startswith('/'):
+            endpoint = '/' + endpoint
+        
+        url = f"{self.config.base_url}{endpoint}"  # This should now be correct
         
         try:
             response = self.session.request(method, url, **kwargs)
             self._handle_rate_limit(response)
             
-            if response.status_code == 429:  # Rate limited
+            if response.status_code == 429:
                 retry_after = int(response.headers.get('Retry-After', 2))
-                logger.warning(f"Rate limited, waiting {retry_after} seconds...")
                 time.sleep(retry_after)
                 return self._make_request(method, endpoint, **kwargs)
             
             response.raise_for_status()
+            
+            # Check content type
+            if 'application/json' not in response.headers.get('content-type', ''):
+                raise ShopifyAPIError(f"Non-JSON response: {response.text[:100]}...")
+            
             return response.json()
             
         except requests.RequestException as e:
-            logger.error(f"Shopify API request failed: {e}")
             raise ShopifyAPIError(f"API request failed: {e}")
     
     def get_shop_info(self) -> Dict:
@@ -86,8 +94,31 @@ class ShopifyClient:
             params = {}  # Clear params for subsequent requests
     
     def get_collections(self) -> List[Dict]:
-        """Get all collections"""
-        return self._make_request('GET', '/collections.json').get('collections', [])
+        """Get all collections (both custom and smart collections)"""
+        try:
+            all_collections = []
+            
+            # Try to get custom collections
+            try:
+                custom_response = self._make_request('GET', '/custom_collections.json')
+                custom_collections = custom_response.get('custom_collections', [])
+                all_collections.extend(custom_collections)
+            except ShopifyAPIError:
+                logger.debug("No custom collections found or no permission")
+            
+            # Try to get smart collections  
+            try:
+                smart_response = self._make_request('GET', '/smart_collections.json')
+                smart_collections = smart_response.get('smart_collections', [])
+                all_collections.extend(smart_collections)
+            except ShopifyAPIError:
+                logger.debug("No smart collections found or no permission")
+            
+            return all_collections
+            
+        except Exception as e:
+            logger.warning(f"Could not fetch collections: {e}")
+            return []  # Return empty list instead of failing
     
     def get_product_metafields(self, product_id: int) -> List[Dict]:
         """Get metafields for a specific product"""

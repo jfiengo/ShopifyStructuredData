@@ -11,8 +11,8 @@ import logging
 
 from .shopify_client import ShopifyClient
 from .config import SchemaConfig
-from ..utils.helpers import clean_html, generate_price_valid_until
-from ..utils.constants import CATEGORY_MAPPING, REQUIRED_PRODUCT_FIELDS
+from src.utils.helpers import clean_html, generate_price_valid_until
+from src.utils.constants import CATEGORY_MAPPING, REQUIRED_PRODUCT_FIELDS
 
 logger = logging.getLogger(__name__)
 

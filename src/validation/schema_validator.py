@@ -10,13 +10,13 @@ from typing import Dict, List, Optional, Any
 import logging
 from urllib.parse import urljoin
 
-from ..utils.constants import (
+from src.utils.constants import (
     REQUIRED_PRODUCT_FIELDS, 
     REQUIRED_ORGANIZATION_FIELDS,
     GOOGLE_RICH_RESULTS_REQUIREMENTS,
     SCHEMA_TYPES
 )
-from ..utils.exceptions import ValidationError
+from src.utils.exceptions import ValidationError
 
 logger = logging.getLogger(__name__)
 
