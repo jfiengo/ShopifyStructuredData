@@ -5,10 +5,10 @@ Command Line Interface for Shopify Schema Generator
 """
 
 import click
-from .commands.generate import generate
-from .commands.analyze import analyze
-from .commands.validate import validate
-from .commands.setup import setup
+from cli.commands.generate import generate
+from cli.commands.analyze import analyze
+from cli.commands.validate import validate
+from cli.commands.setup import setup
 
 @click.group()
 @click.version_option(version='1.0.0')

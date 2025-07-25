@@ -20,7 +20,7 @@ sys.path.append(str(Path(__file__).parent.parent.parent / 'src'))
 from core.config import SchemaConfig
 from core.generator import SchemaGenerator
 from ai.enhancer import AIEnhancer
-from integrations.reviews.detector import ReviewDetector
+# from integrations.reviews.detector import ReviewDetector
 from utils.exceptions import SchemaGeneratorError
 
 load_dotenv()
@@ -69,9 +69,9 @@ def generate(shop_domain, access_token, openai_key, output, limit, include_analy
         
         # Initialize components
         ai_enhancer = AIEnhancer(openai_key) if config.enable_ai_features and openai_key else None
-        review_integrator = ReviewDetector() if config.include_reviews else None
+        # review_integrator = ReviewDetector() if config.include_reviews else None
         
-        generator = SchemaGenerator(config, ai_enhancer, review_integrator)
+        generator = SchemaGenerator(config, ai_enhancer)
         
         # Generate schemas with progress tracking
         with Progress(
