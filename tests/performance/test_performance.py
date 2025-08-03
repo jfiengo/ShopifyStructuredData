@@ -5,6 +5,7 @@ Performance tests for schema generation
 
 import pytest
 import time
+import json
 from unittest.mock import Mock, patch
 from src.core.config import SchemaConfig
 from src.core.generator import SchemaGenerator
@@ -12,13 +13,13 @@ from src.core.generator import SchemaGenerator
 class TestPerformance:
     """Performance tests"""
     
-    @patch('core.shopify_client.requests.Session.request')
-    def test_large_product_set_performance(self, mock_request):
+    @patch('src.core.shopify_client.requests.Session')
+    def test_large_product_set_performance(self, mock_session):
         """Test performance with large number of products"""
         # Mock responses for large dataset
         shop_response = Mock()
         shop_response.status_code = 200
-        shop_response.headers = {'Content-Type': 'application/json'}
+        shop_response.headers = {'content-type': 'application/json'}
         shop_response.json.return_value = {
             'shop': {
                 'id': 12345,
@@ -26,6 +27,7 @@ class TestPerformance:
                 'currency': 'USD'
             }
         }
+        shop_response.text = '{"shop": {"id": 12345, "name": "Performance Test Store", "currency": "USD"}}'
         
         # Create 100 mock products
         mock_products = []
@@ -50,15 +52,25 @@ class TestPerformance:
         
         products_response = Mock()
         products_response.status_code = 200
-        products_response.headers = {'Content-Type': 'application/json'}
+        products_response.headers = {'content-type': 'application/json'}
         products_response.json.return_value = {'products': mock_products}
+        products_response.text = '{"products": ' + json.dumps(mock_products) + '}'
         
         collections_response = Mock()
         collections_response.status_code = 200
-        collections_response.headers = {'Content-Type': 'application/json'}
+        collections_response.headers = {'content-type': 'application/json'}
         collections_response.json.return_value = {'collections': []}
+        collections_response.text = '{"collections": []}'
         
-        mock_request.side_effect = [shop_response, products_response, collections_response]
+        mock_session_instance = Mock()
+        mock_session_instance.request.side_effect = [shop_response, products_response, collections_response]
+        
+        # Mock the head method for pagination
+        head_response = Mock()
+        head_response.headers = {'Link': ''}  # No next page
+        mock_session_instance.head.return_value = head_response
+        
+        mock_session.return_value = mock_session_instance
         
         # Test configuration
         config = SchemaConfig(

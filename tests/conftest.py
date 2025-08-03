@@ -106,7 +106,7 @@ def sample_collection():
 @pytest.fixture
 def mock_shopify_client(sample_shop_info, sample_product, sample_collection):
     """Mock Shopify client for testing"""
-    with patch('core.shopify_client.ShopifyClient') as mock_client_class:
+    with patch('src.core.shopify_client.ShopifyClient') as mock_client_class:
         mock_client = Mock()
         mock_client.get_shop_info.return_value = sample_shop_info
         mock_client.get_products.return_value = iter([sample_product])

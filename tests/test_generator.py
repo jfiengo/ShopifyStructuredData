@@ -12,7 +12,7 @@ class TestSchemaGenerator:
     
     def test_generator_initialization(self, sample_config):
         """Test generator initialization"""
-        with patch('core.generator.ShopifyClient'):
+        with patch('src.core.generator.ShopifyClient'):
             generator = SchemaGenerator(sample_config)
             
             assert generator.config == sample_config
@@ -23,14 +23,14 @@ class TestSchemaGenerator:
         """Test generator with AI enhancer"""
         mock_ai_enhancer = Mock()
         
-        with patch('core.generator.ShopifyClient'):
+        with patch('src.core.generator.ShopifyClient'):
             generator = SchemaGenerator(sample_config_with_ai, ai_enhancer=mock_ai_enhancer)
             
             assert generator.ai_enhancer == mock_ai_enhancer
     
     def test_generate_product_schema(self, sample_config, sample_product, sample_shop_info):
         """Test product schema generation"""
-        with patch('core.generator.ShopifyClient'):
+        with patch('src.core.generator.ShopifyClient'):
             generator = SchemaGenerator(sample_config)
             
             schema = generator.generate_product_schema(sample_product, sample_shop_info)
@@ -46,7 +46,7 @@ class TestSchemaGenerator:
     
     def test_generate_organization_schema(self, sample_config, sample_shop_info):
         """Test organization schema generation"""
-        with patch('core.generator.ShopifyClient'):
+        with patch('src.core.generator.ShopifyClient'):
             generator = SchemaGenerator(sample_config)
             
             schema = generator.generate_organization_schema(sample_shop_info)
@@ -60,7 +60,7 @@ class TestSchemaGenerator:
     
     def test_generate_breadcrumb_schema(self, sample_config, sample_product, sample_collection):
         """Test breadcrumb schema generation"""
-        with patch('core.generator.ShopifyClient'):
+        with patch('src.core.generator.ShopifyClient'):
             generator = SchemaGenerator(sample_config)
             
             collections = [sample_collection]
@@ -95,7 +95,7 @@ class TestSchemaGenerator:
             }
         ]
         
-        with patch('core.generator.ShopifyClient'):
+        with patch('src.core.generator.ShopifyClient'):
             generator = SchemaGenerator(sample_config)
             offers = generator._generate_offers(variants, sample_shop_info)
             
@@ -113,7 +113,7 @@ class TestSchemaGenerator:
     
     def test_categorize_product_basic(self, sample_config):
         """Test basic product categorization"""
-        with patch('core.generator.ShopifyClient'):
+        with patch('src.core.generator.ShopifyClient'):
             generator = SchemaGenerator(sample_config)
             
             # Test clothing category
@@ -140,7 +140,7 @@ class TestSchemaGenerator:
             category = generator._categorize_product(product)
             assert category == 'Other'
     
-    @patch('core.generator.ShopifyClient')
+    @patch('src.core.generator.ShopifyClient')
     def test_complete_schema_package_generation(self, mock_client_class, sample_config, 
                                               sample_shop_info, sample_product, sample_collection):
         """Test complete schema package generation"""

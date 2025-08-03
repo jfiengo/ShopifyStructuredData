@@ -13,26 +13,55 @@ from src.core.generator import SchemaGenerator
 class TestEndToEndIntegration:
     """End-to-end integration tests"""
     
-    @patch('core.shopify_client.requests.Session.request')
-    def test_complete_schema_generation_flow(self, mock_request, sample_shop_info, sample_product):
+    @patch('src.core.shopify_client.requests.Session')
+    def test_complete_schema_generation_flow(self, mock_session, sample_shop_info, sample_product):
         """Test complete schema generation flow"""
         # Mock API responses
         shop_response = Mock()
         shop_response.status_code = 200
-        shop_response.headers = {'Content-Type': 'application/json'}
+        shop_response.headers = {'content-type': 'application/json'}
         shop_response.json.return_value = {'shop': sample_shop_info}
+        shop_response.text = '{"shop": ' + json.dumps(sample_shop_info) + '}'
         
         products_response = Mock()
         products_response.status_code = 200
-        products_response.headers = {'Content-Type': 'application/json'}
+        products_response.headers = {'content-type': 'application/json'}
         products_response.json.return_value = {'products': [sample_product]}
+        products_response.text = '{"products": [' + json.dumps(sample_product) + ']}'
         
         collections_response = Mock()
         collections_response.status_code = 200
-        collections_response.headers = {'Content-Type': 'application/json'}
+        collections_response.headers = {'content-type': 'application/json'}
         collections_response.json.return_value = {'collections': []}
+        collections_response.text = '{"collections": []}'
         
-        mock_request.side_effect = [shop_response, products_response, collections_response]
+        mock_session_instance = Mock()
+        
+        # Create a function to return responses based on the endpoint being called
+        def mock_request_side_effect(method, url, **kwargs):
+            if 'shop.json' in url:
+                return shop_response
+            elif 'products.json' in url:
+                return products_response
+            elif 'collections.json' in url or 'custom_collections.json' in url or 'smart_collections.json' in url:
+                return collections_response
+            else:
+                # Default response for any other endpoints
+                default_response = Mock()
+                default_response.status_code = 200
+                default_response.headers = {'content-type': 'application/json'}
+                default_response.json.return_value = {}
+                default_response.text = '{}'
+                return default_response
+        
+        mock_session_instance.request.side_effect = mock_request_side_effect
+        
+        # Mock the head method for pagination
+        head_response = Mock()
+        head_response.headers = {'Link': ''}  # No next page
+        mock_session_instance.head.return_value = head_response
+        
+        mock_session.return_value = mock_session_instance
         
         # Create configuration
         config = SchemaConfig(
@@ -73,7 +102,7 @@ class TestEndToEndIntegration:
     
     def test_schema_validation_integration(self, sample_schemas):
         """Test integration between generation and validation"""
-        from validation.schema_validator import SchemaValidator
+        from src.validation.schema_validator import SchemaValidator
         
         validator = SchemaValidator()
         
