@@ -1,0 +1,419 @@
+{% extends "base.html" %}
+
+{% block title %}Validate Schemas - Shopify Structured Data Generator{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="h2 mb-2">
+                    <i class="fas fa-check-circle text-primary me-2"></i>
+                    Validate Structured Data Schemas
+                </h1>
+                <p class="text-muted">Validate your generated schemas for compliance and completeness</p>
+            </div>
+            <a href="/" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-upload me-2"></i>
+                    Upload Schema File
+                </h5>
+            </div>
+            <div class="card-body">
+                <form id="validateForm" enctype="multipart/form-data">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <label for="schemaFile" class="form-label">Schema File *</label>
+                            <input type="file" class="form-control" id="schemaFile" name="file" 
+                                   accept=".json" required>
+                            <div class="form-text">Upload a JSON file containing your structured data schemas</div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h6 class="text-primary mb-3">Validation Options</h6>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="schemaType" class="form-label">Schema Type</label>
+                            <select class="form-select" id="schemaType" name="schema_type">
+                                <option value="all">All Schemas</option>
+                                <option value="product">Product Only</option>
+                                <option value="organization">Organization Only</option>
+                                <option value="breadcrumb">Breadcrumb Only</option>
+                                <option value="faq">FAQ Only</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check mt-4">
+                                <input class="form-check-input" type="checkbox" id="detailedValidation" name="detailed">
+                                <label class="form-check-label" for="detailedValidation">
+                                    Detailed validation
+                                </label>
+                                <div class="form-text">Show comprehensive validation results</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="googleCheck" name="google_check">
+                                <label class="form-check-label" for="googleCheck">
+                                    Google Rich Results check
+                                </label>
+                                <div class="form-text">Validate against Google requirements</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="strictMode" name="strict">
+                                <label class="form-check-label" for="strictMode">
+                                    Strict mode
+                                </label>
+                                <div class="form-text">Treat warnings as errors</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-lg" id="validateBtn">
+                                <i class="fas fa-check me-2"></i>
+                                Validate Schemas
+                            </button>
+                            <div class="loading mt-3" id="loadingIndicator">
+                                <div class="d-flex align-items-center">
+                                    <div class="spinner-border text-primary me-3" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <span class="text-muted">Validating schemas...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="card mt-4" id="resultsCard" style="display: none;">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-chart-bar me-2"></i>
+                    Validation Results
+                </h5>
+            </div>
+            <div class="card-body">
+                <div id="resultsContent">
+                    <!-- Results will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <!-- Help Section -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-question-circle me-2"></i>
+                    How to Use
+                </h5>
+            </div>
+            <div class="card-body">
+                <h6>File Format</h6>
+                <p class="small text-muted">
+                    Upload a JSON file containing your structured data schemas. The file should contain:
+                </p>
+                <ul class="small">
+                    <li>Product schemas</li>
+                    <li>Organization schema</li>
+                    <li>Breadcrumb schemas</li>
+                    <li>Review schemas (optional)</li>
+                </ul>
+                
+                <hr>
+                
+                <h6>Validation Types</h6>
+                <p class="small text-muted">
+                    <strong>Basic Validation:</strong> Check schema syntax and required fields<br>
+                    <strong>Detailed Validation:</strong> Comprehensive analysis of all schemas<br>
+                    <strong>Google Check:</strong> Validate against Google Rich Results requirements<br>
+                    <strong>Strict Mode:</strong> Treat warnings as errors
+                </p>
+                
+                <hr>
+                
+                <h6>What's Validated</h6>
+                <ul class="small">
+                    <li>JSON-LD syntax</li>
+                    <li>Required fields</li>
+                    <li>Data types</li>
+                    <li>Schema.org compliance</li>
+                    <li>Google Rich Results compatibility</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Example File Structure -->
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-file-code me-2"></i>
+                    Example File Structure
+                </h5>
+            </div>
+            <div class="card-body">
+                <pre class="small bg-light p-2 rounded"><code>{
+  "organization": {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Your Store",
+    "url": "https://your-store.myshopify.com"
+  },
+  "products": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Product Name",
+      "description": "Product description",
+      "sku": "SKU123",
+      "mpn": "MPN123",
+      "brand": {
+        "@type": "Brand",
+        "name": "Brand Name"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "29.99",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]
+}</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('validateForm');
+    const validateBtn = document.getElementById('validateBtn');
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    const resultsCard = document.getElementById('resultsCard');
+    const resultsContent = document.getElementById('resultsContent');
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Show loading
+        validateBtn.disabled = true;
+        showLoading(loadingIndicator);
+        resultsCard.style.display = 'none';
+        
+        // Collect form data
+        const formData = new FormData(form);
+        
+        try {
+            const response = await fetch('/validate', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                displayValidationResults(result);
+                resultsCard.style.display = 'block';
+                showAlert('Validation completed successfully!', 'success');
+                resultsCard.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                showAlert(`Error: ${result.error}`, 'danger');
+            }
+            
+        } catch (error) {
+            console.error('Error:', error);
+            showAlert('An unexpected error occurred. Please try again.', 'danger');
+        } finally {
+            // Hide loading
+            validateBtn.disabled = false;
+            hideLoading(loadingIndicator);
+        }
+    });
+
+    function displayValidationResults(result) {
+        const validation = result.validation_results;
+        
+        let html = `
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <div class="text-center p-3 bg-light rounded">
+                        <div class="h4 mb-0 text-primary">${validation.file_info.total_schemas}</div>
+                        <small class="text-muted">Total Schemas</small>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center p-3 bg-light rounded">
+                        <div class="h4 mb-0 text-success">${validation.summary.total_valid}</div>
+                        <small class="text-muted">Valid</small>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center p-3 bg-light rounded">
+                        <div class="h4 mb-0 text-danger">${validation.summary.total_invalid}</div>
+                        <small class="text-muted">Invalid</small>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center p-3 bg-light rounded">
+                        <div class="h4 mb-0 text-warning">${validation.summary.total_warnings}</div>
+                        <small class="text-muted">Warnings</small>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        // Overall Status
+        const hasErrors = validation.summary.total_invalid > 0;
+        const hasWarnings = validation.summary.total_warnings > 0;
+        
+        if (hasErrors) {
+            html += `
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>Validation Failed!</strong> Found ${validation.summary.total_invalid} invalid schemas.
+                </div>
+            `;
+        } else if (hasWarnings) {
+            html += `
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>Validation Passed with Warnings</strong> Found ${validation.summary.total_warnings} warnings.
+                </div>
+            `;
+        } else {
+            html += `
+                <div class="alert alert-success">
+                    <i class="fas fa-check-circle me-2"></i>
+                    <strong>Validation Passed!</strong> All schemas are valid.
+                </div>
+            `;
+        }
+        
+        // Organization Schema
+        if (validation.organization) {
+            html += `
+                <div class="mb-4">
+                    <h6 class="text-primary">
+                        <i class="fas fa-building me-2"></i>
+                        Organization Schema
+                    </h6>
+                    <div class="alert ${validation.organization.valid ? 'alert-success' : 'alert-danger'}">
+                        ${validation.organization.valid ? 
+                            '<i class="fas fa-check-circle me-2"></i>Valid' :
+                            '<i class="fas fa-times-circle me-2"></i>Invalid'
+                        }
+                    </div>
+                    ${validation.organization.errors && validation.organization.errors.length > 0 ? 
+                        `<ul class="list-group list-group-flush">
+                            ${validation.organization.errors.map(error => 
+                                `<li class="list-group-item text-danger">${error}</li>`
+                            ).join('')}
+                        </ul>` : ''
+                    }
+                </div>
+            `;
+        }
+        
+        // Product Schemas
+        if (validation.products && validation.products.length > 0) {
+            html += `
+                <div class="mb-4">
+                    <h6 class="text-primary">
+                        <i class="fas fa-box me-2"></i>
+                        Product Schemas (${validation.products.length})
+                    </h6>
+            `;
+            
+            validation.products.forEach((product, index) => {
+                html += `
+                    <div class="card mb-2">
+                        <div class="card-body p-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong>Product ${index + 1}</strong>
+                                    ${product.product_id ? `(ID: ${product.product_id})` : ''}
+                                </div>
+                                <span class="badge ${product.valid ? 'bg-success' : 'bg-danger'}">
+                                    ${product.valid ? 'Valid' : 'Invalid'}
+                                </span>
+                            </div>
+                            ${product.errors && product.errors.length > 0 ? 
+                                `<ul class="list-group list-group-flush mt-2">
+                                    ${product.errors.map(error => 
+                                        `<li class="list-group-item text-danger small">${error}</li>`
+                                    ).join('')}
+                                </ul>` : ''
+                            }
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `</div>`;
+        }
+        
+        // Errors Summary
+        if (validation.summary.errors && validation.summary.errors.length > 0) {
+            html += `
+                <div class="mb-4">
+                    <h6 class="text-danger">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        All Errors
+                    </h6>
+                    <ul class="list-group list-group-flush">
+                        ${validation.summary.errors.map(error => 
+                            `<li class="list-group-item text-danger">${error}</li>`
+                        ).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+        
+        // Warnings Summary
+        if (validation.summary.warnings && validation.summary.warnings.length > 0) {
+            html += `
+                <div class="mb-4">
+                    <h6 class="text-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        All Warnings
+                    </h6>
+                    <ul class="list-group list-group-flush">
+                        ${validation.summary.warnings.map(warning => 
+                            `<li class="list-group-item text-warning">${warning}</li>`
+                        ).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+        
+        resultsContent.innerHTML = html;
+    }
+});
+</script>
+{% endblock %} 

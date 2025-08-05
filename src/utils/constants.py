@@ -60,10 +60,7 @@ CATEGORY_MAPPING = {
 # Required fields for different schema types
 REQUIRED_PRODUCT_FIELDS = [
     'name',
-    'description',
-    'image',
-    'offers',
-    'brand'
+    'offers'
 ]
 
 REQUIRED_ORGANIZATION_FIELDS = [
@@ -202,8 +199,8 @@ AI_PROMPTS = {
 # Google Rich Results requirements
 GOOGLE_RICH_RESULTS_REQUIREMENTS = {
     'Product': {
-        'required': ['name', 'image', 'offers'],
-        'recommended': ['description', 'brand', 'sku', 'aggregateRating'],
+        'required': ['name', 'offers'],
+        'recommended': ['description', 'image', 'brand', 'sku', 'aggregateRating'],
         'image_requirements': {
             'min_width': 160,
             'min_height': 90,

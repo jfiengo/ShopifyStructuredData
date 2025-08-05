@@ -11,8 +11,8 @@ import logging
 
 from .shopify_client import ShopifyClient
 from .config import SchemaConfig
-from src.utils.helpers import clean_html, generate_price_valid_until
-from src.utils.constants import CATEGORY_MAPPING, REQUIRED_PRODUCT_FIELDS
+from utils.helpers import clean_html, generate_price_valid_until
+from utils.constants import CATEGORY_MAPPING, REQUIRED_PRODUCT_FIELDS
 
 logger = logging.getLogger(__name__)
 
@@ -64,7 +64,12 @@ class SchemaGenerator:
         if self.config.include_collections:
             for collection in collections:
                 collection_schema = self._generate_collection_schema(collection, shop_info)
-                schemas["collections"].append(collection_schema)
+                schemas["collections"].append({
+                    "collection_id": collection.get('id'),
+                    "title": collection.get('title', 'Unknown Collection'),
+                    "handle": collection.get('handle', ''),
+                    "schema": collection_schema
+                })
         
         schemas["total_products"] = product_count
         
@@ -106,6 +111,14 @@ class SchemaGenerator:
         images = [img['src'] for img in product.get('images', [])]
         variants = product.get('variants', [])
         
+        # Handle empty description - use title as fallback
+        if not clean_description or clean_description.strip() == '':
+            clean_description = f"Product: {product['title']}"
+        
+        # Handle empty images - skip image field if no images available
+        if not images:
+            images = None
+        
         # Enhance description with AI if available
         if self.ai_enhancer and self.config.enable_ai_features:
             try:
@@ -119,16 +132,24 @@ class SchemaGenerator:
             "@type": "Product",
             "name": product['title'],
             "description": clean_description,
-            "image": images,
             "url": f"https://{self.config.shop_domain}.myshopify.com/products/{product['handle']}",
             "brand": {
                 "@type": "Brand",
                 "name": product.get('vendor', shop_info.get('name', 'Unknown'))
             },
-            "sku": variants[0].get('sku', product['handle']) if variants else product['handle'],
             "offers": self._generate_offers(variants, shop_info),
             "category": self._categorize_product(product)
         }
+        
+        # Add image only if available
+        if images:
+            schema["image"] = images
+        
+        # Add SKU only if available (not null)
+        if variants and variants[0].get('sku'):
+            schema["sku"] = variants[0]['sku']
+        elif product.get('handle'):
+            schema["sku"] = product['handle']
         
         # Add aggregate rating if available
         if rating_data := self._get_product_rating(product):
@@ -261,13 +282,17 @@ class SchemaGenerator:
                     if variant.get('inventory_quantity', 0) > 0 
                     else "https://schema.org/OutOfStock"
                 ),
-                "sku": variant.get('sku', ''),
                 "priceValidUntil": generate_price_valid_until(),
                 "seller": {
                     "@type": "Organization",
                     "name": shop_info.get('name', 'Store')
                 }
             }
+            
+            # Add SKU only if it's not null/empty
+            if variant.get('sku'):
+                offer["sku"] = variant['sku']
+            
             offers.append(offer)
         
         return offers
@@ -326,7 +351,6 @@ class SchemaGenerator:
             variant_schema = {
                 "@type": "ProductModel",
                 "name": variant.get('title', ''),
-                "sku": variant.get('sku', ''),
                 "offers": {
                     "@type": "Offer",
                     "price": variant.get('price', '0'),
@@ -337,6 +361,11 @@ class SchemaGenerator:
                     )
                 }
             }
+            
+            # Add SKU only if it's not null/empty
+            if variant.get('sku'):
+                variant_schema["sku"] = variant['sku']
+            
             variant_schemas.append(variant_schema)
         
         return variant_schemas
@@ -396,6 +425,10 @@ class SchemaGenerator:
     def _generate_basic_faq(self, product: Dict) -> Dict:
         """Generate basic FAQ without AI"""
         description = clean_html(product.get('body_html', ''))
+        
+        # Handle empty description
+        if not description or description.strip() == '':
+            description = f"This is a {product['title']} product."
         
         return {
             "@context": "https://schema.org",

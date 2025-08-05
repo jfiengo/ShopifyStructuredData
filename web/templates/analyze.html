@@ -1,0 +1,367 @@
+{% extends "base.html" %}
+
+{% block title %}Analyze Schemas - Shopify Structured Data Generator{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="h2 mb-2">
+                    <i class="fas fa-search text-primary me-2"></i>
+                    Analyze Existing Structured Data
+                </h1>
+                <p class="text-muted">Analyze structured data on your product pages to identify gaps and opportunities</p>
+            </div>
+            <a href="/" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-cog me-2"></i>
+                    Analysis Configuration
+                </h5>
+            </div>
+            <div class="card-body">
+                <form id="analyzeForm">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label for="shopDomain" class="form-label">Shop Domain *</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="shopDomain" name="shop_domain" 
+                                       placeholder="your-store" required>
+                                <span class="input-group-text">.myshopify.com</span>
+                            </div>
+                            <div class="form-text">Your Shopify store domain</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="productHandle" class="form-label">Product Handle *</label>
+                            <input type="text" class="form-control" id="productHandle" name="product_handle" 
+                                   placeholder="product-name" required>
+                            <div class="form-text">The product handle from the URL</div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h6 class="text-primary mb-3">Analysis Options</h6>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="detailedAnalysis" name="detailed">
+                                <label class="form-check-label" for="detailedAnalysis">
+                                    Detailed analysis
+                                </label>
+                                <div class="form-text">Show comprehensive schema breakdown</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="googleCheck" name="google_check">
+                                <label class="form-check-label" for="googleCheck">
+                                    Google Rich Results check
+                                </label>
+                                <div class="form-text">Validate against Google requirements</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-lg" id="analyzeBtn">
+                                <i class="fas fa-search me-2"></i>
+                                Analyze Product
+                            </button>
+                            <div class="loading mt-3" id="loadingIndicator">
+                                <div class="d-flex align-items-center">
+                                    <div class="spinner-border text-primary me-3" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <span class="text-muted">Analyzing structured data...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="card mt-4" id="resultsCard" style="display: none;">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-chart-bar me-2"></i>
+                    Analysis Results
+                </h5>
+            </div>
+            <div class="card-body">
+                <div id="resultsContent">
+                    <!-- Results will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <!-- Help Section -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-question-circle me-2"></i>
+                    How to Use
+                </h5>
+            </div>
+            <div class="card-body">
+                <h6>Finding Product Handle</h6>
+                <p class="small text-muted">
+                    The product handle is the last part of your product URL. For example:
+                </p>
+                <div class="bg-light p-2 rounded small">
+                    <code>https://your-store.myshopify.com/products/<strong>product-name</strong></code>
+                </div>
+                <p class="small text-muted mt-2">
+                    In this case, the product handle is <strong>product-name</strong>
+                </p>
+                
+                <hr>
+                
+                <h6>What's Analyzed</h6>
+                <ul class="small">
+                    <li>Existing JSON-LD schemas</li>
+                    <li>Microdata markup</li>
+                    <li>RDFa annotations</li>
+                    <li>Schema completeness</li>
+                    <li>Google Rich Results compatibility</li>
+                </ul>
+                
+                <hr>
+                
+                <h6>Analysis Types</h6>
+                <p class="small text-muted">
+                    <strong>Basic Analysis:</strong> Overview of existing structured data<br>
+                    <strong>Detailed Analysis:</strong> Comprehensive breakdown of all schemas<br>
+                    <strong>Google Check:</strong> Validation against Google Rich Results requirements
+                </p>
+            </div>
+        </div>
+
+        <!-- Example Results -->
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-lightbulb me-2"></i>
+                    What to Look For
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info small">
+                    <strong>Good Signs:</strong>
+                    <ul class="mb-0 mt-2">
+                        <li>JSON-LD schemas present</li>
+                        <li>Product schema with required fields</li>
+                        <li>Organization schema</li>
+                        <li>Breadcrumb navigation</li>
+                    </ul>
+                </div>
+                
+                <div class="alert alert-warning small">
+                    <strong>Issues to Address:</strong>
+                    <ul class="mb-0 mt-2">
+                        <li>Missing required fields</li>
+                        <li>No structured data</li>
+                        <li>Invalid schema syntax</li>
+                        <li>Missing review data</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('analyzeForm');
+    const analyzeBtn = document.getElementById('analyzeBtn');
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    const resultsCard = document.getElementById('resultsCard');
+    const resultsContent = document.getElementById('resultsContent');
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Show loading
+        analyzeBtn.disabled = true;
+        showLoading(loadingIndicator);
+        resultsCard.style.display = 'none';
+        
+        // Collect form data
+        const formData = new FormData(form);
+        const data = {
+            shop_domain: formData.get('shop_domain'),
+            product_handle: formData.get('product_handle'),
+            detailed: formData.get('detailed') === 'on',
+            google_check: formData.get('google_check') === 'on'
+        };
+        
+        try {
+            const response = await fetch('/analyze', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                displayAnalysisResults(result);
+                resultsCard.style.display = 'block';
+                showAlert('Analysis completed successfully!', 'success');
+                resultsCard.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                showAlert(`Error: ${result.error}`, 'danger');
+            }
+            
+        } catch (error) {
+            console.error('Error:', error);
+            showAlert('An unexpected error occurred. Please try again.', 'danger');
+        } finally {
+            // Hide loading
+            analyzeBtn.disabled = false;
+            hideLoading(loadingIndicator);
+        }
+    });
+
+    function displayAnalysisResults(result) {
+        const analysis = result.analysis;
+        const productUrl = result.product_url;
+        
+        let html = `
+            <div class="mb-4">
+                <h6 class="text-primary">Product URL</h6>
+                <a href="${productUrl}" target="_blank" class="text-decoration-none">
+                    ${productUrl} <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+        `;
+        
+        if (analysis.error) {
+            html += `
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    ${analysis.error}
+                </div>
+            `;
+        } else {
+            // Summary Statistics
+            html += `
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="text-center p-3 bg-light rounded">
+                            <div class="h4 mb-0 text-primary">${analysis.found_schemas || 0}</div>
+                            <small class="text-muted">JSON-LD Schemas</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center p-3 bg-light rounded">
+                            <div class="h4 mb-0 text-primary">${analysis.microdata_items || 0}</div>
+                            <small class="text-muted">Microdata Items</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center p-3 bg-light rounded">
+                            <div class="h4 mb-0 text-primary">${analysis.rdfa_items || 0}</div>
+                            <small class="text-muted">RDFa Items</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center p-3 bg-light rounded">
+                            <div class="h4 mb-0 text-primary">${analysis.schema_types?.length || 0}</div>
+                            <small class="text-muted">Schema Types</small>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Schema Types Found
+            if (analysis.schema_types && analysis.schema_types.length > 0) {
+                html += `
+                    <div class="mb-4">
+                        <h6 class="text-primary">Schema Types Found</h6>
+                        <div class="d-flex flex-wrap gap-2">
+                            ${analysis.schema_types.map(type => 
+                                `<span class="badge bg-success">${type}</span>`
+                            ).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Missing Elements
+            if (analysis.missing_elements && analysis.missing_elements.length > 0) {
+                html += `
+                    <div class="mb-4">
+                        <h6 class="text-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            Missing Elements
+                        </h6>
+                        <ul class="list-group list-group-flush">
+                            ${analysis.missing_elements.map(element => 
+                                `<li class="list-group-item">${element}</li>`
+                            ).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            // Recommendations
+            if (analysis.recommendations && analysis.recommendations.length > 0) {
+                html += `
+                    <div class="mb-4">
+                        <h6 class="text-info">
+                            <i class="fas fa-lightbulb me-2"></i>
+                            Recommendations
+                        </h6>
+                        <ul class="list-group list-group-flush">
+                            ${analysis.recommendations.map(rec => 
+                                `<li class="list-group-item">${rec}</li>`
+                            ).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            // Google Rich Results Check
+            if (result.google_check && analysis.google_compatibility) {
+                html += `
+                    <div class="mb-4">
+                        <h6 class="text-primary">
+                            <i class="fab fa-google me-2"></i>
+                            Google Rich Results Compatibility
+                        </h6>
+                        <div class="alert ${analysis.google_compatibility.compatible ? 'alert-success' : 'alert-warning'}">
+                            ${analysis.google_compatibility.compatible ? 
+                                '<i class="fas fa-check-circle me-2"></i>Compatible with Google Rich Results' :
+                                '<i class="fas fa-exclamation-triangle me-2"></i>May not be compatible with Google Rich Results'
+                            }
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        resultsContent.innerHTML = html;
+    }
+});
+</script>
+{% endblock %} 

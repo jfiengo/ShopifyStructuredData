@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Shopify Structured Data Generator{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold text-primary mb-3">
+                <i class="fas fa-code me-3"></i>
+                Shopify Structured Data Generator
+            </h1>
+            <p class="lead text-muted">
+                Generate, validate, and analyze structured data schemas for your Shopify store
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mb-5">
+    <div class="col-12">
+        <h2 class="h4 mb-4">Quick Actions</h2>
+    </div>
+    
+    <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+            <div class="card-body">
+                <div class="feature-icon">
+                    <i class="fas fa-magic"></i>
+                </div>
+                <h5 class="card-title">Generate Schemas</h5>
+                <p class="card-text">Create structured data schemas for your Shopify products and store.</p>
+                <a href="/generate" class="btn btn-primary">
+                    <i class="fas fa-play me-2"></i>Start Generating
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+            <div class="card-body">
+                <div class="feature-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h5 class="card-title">Analyze Existing</h5>
+                <p class="card-text">Analyze existing structured data on your product pages.</p>
+                <a href="/analyze" class="btn btn-primary">
+                    <i class="fas fa-search me-2"></i>Analyze Data
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+            <div class="card-body">
+                <div class="feature-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h5 class="card-title">Validate Schemas</h5>
+                <p class="card-text">Validate your generated schemas for compliance and completeness.</p>
+                <a href="/validate" class="btn btn-primary">
+                    <i class="fas fa-check me-2"></i>Validate
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+            <div class="card-body">
+                <div class="feature-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h5 class="card-title">Documentation</h5>
+                <p class="card-text">Learn how to use structured data to improve your SEO.</p>
+                <a href="#" class="btn btn-outline-primary">
+                    <i class="fas fa-book me-2"></i>Read Docs
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features -->
+<div class="row mb-5">
+    <div class="col-12">
+        <h2 class="h4 mb-4">Key Features</h2>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-robot text-primary me-2"></i>
+                    AI-Powered Enhancements
+                </h5>
+                <p class="card-text">
+                    Leverage OpenAI's GPT models to automatically enhance your product descriptions 
+                    and generate rich, SEO-optimized structured data.
+                </p>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check text-success me-2"></i>Automatic description enhancement</li>
+                    <li><i class="fas fa-check text-success me-2"></i>SEO-optimized content generation</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Smart product categorization</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-shield-alt text-primary me-2"></i>
+                    Comprehensive Validation
+                </h5>
+                <p class="card-text">
+                    Validate your schemas against Google Rich Results requirements and 
+                    ensure compliance with structured data standards.
+                </p>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check text-success me-2"></i>Google Rich Results compatibility</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Schema.org compliance checking</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Detailed error reporting</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-chart-line text-primary me-2"></i>
+                    Advanced Analytics
+                </h5>
+                <p class="card-text">
+                    Analyze existing structured data on your product pages to identify 
+                    gaps and opportunities for improvement.
+                </p>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check text-success me-2"></i>Existing schema analysis</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Missing elements detection</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Performance recommendations</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-download text-primary me-2"></i>
+                    Easy Export
+                </h5>
+                <p class="card-text">
+                    Export your generated schemas in JSON format, ready to be integrated 
+                    into your Shopify theme or application.
+                </p>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check text-success me-2"></i>JSON-LD format output</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Bulk schema generation</li>
+                    <li><i class="fas fa-check text-success me-2"></i>One-click download</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Getting Started -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-rocket me-2"></i>
+                    Getting Started
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="text-center mb-3">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                <span class="fw-bold">1</span>
+                            </div>
+                        </div>
+                        <h6 class="text-center">Connect Your Store</h6>
+                        <p class="text-center text-muted">
+                            Provide your Shopify domain and access token to connect to your store.
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center mb-3">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                <span class="fw-bold">2</span>
+                            </div>
+                        </div>
+                        <h6 class="text-center">Generate Schemas</h6>
+                        <p class="text-center text-muted">
+                            Generate structured data schemas for your products and store information.
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center mb-3">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                <span class="fw-bold">3</span>
+                            </div>
+                        </div>
+                        <h6 class="text-center">Implement & Validate</h6>
+                        <p class="text-center text-muted">
+                            Download your schemas and implement them in your Shopify theme.
+                        </p>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="/generate" class="btn btn-primary btn-lg">
+                        <i class="fas fa-play me-2"></i>
+                        Start Generating Schemas
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

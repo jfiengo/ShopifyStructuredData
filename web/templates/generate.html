@@ -1,0 +1,329 @@
+{% extends "base.html" %}
+
+{% block title %}Generate Schemas - Shopify Structured Data Generator{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="h2 mb-2">
+                    <i class="fas fa-magic text-primary me-2"></i>
+                    Generate Structured Data Schemas
+                </h1>
+                <p class="text-muted">Create comprehensive structured data for your Shopify store</p>
+            </div>
+            <a href="/" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-cog me-2"></i>
+                    Configuration
+                </h5>
+            </div>
+            <div class="card-body">
+                <form id="generateForm">
+                    <!-- Store Information -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h6 class="text-primary mb-3">Store Information</h6>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="shopDomain" class="form-label">Shop Domain *</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="shopDomain" name="shop_domain" 
+                                       placeholder="your-store" required>
+                                <span class="input-group-text">.myshopify.com</span>
+                            </div>
+                            <div class="form-text">Your Shopify store domain (without .myshopify.com)</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="accessToken" class="form-label">Access Token *</label>
+                            <input type="password" class="form-control" id="accessToken" name="access_token" 
+                                   placeholder="shpat_..." required>
+                            <div class="form-text">Your Shopify Admin API access token</div>
+                        </div>
+                    </div>
+
+                    <!-- AI Configuration -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h6 class="text-primary mb-3">AI Enhancement (Optional)</h6>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="openaiKey" class="form-label">OpenAI API Key</label>
+                            <input type="password" class="form-control" id="openaiKey" name="openai_key" 
+                                   placeholder="sk-...">
+                            <div class="form-text">For AI-powered content enhancement</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check mt-4">
+                                <input class="form-check-input" type="checkbox" id="enableAI" name="enable_ai">
+                                <label class="form-check-label" for="enableAI">
+                                    Enable AI enhancements
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Generation Options -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h6 class="text-primary mb-3">Generation Options</h6>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="productLimit" class="form-label">Product Limit</label>
+                            <input type="number" class="form-control" id="productLimit" name="limit" 
+                                   value="50" min="1" max="250">
+                            <div class="form-text">Maximum products to process</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check mt-4">
+                                <input class="form-check-input" type="checkbox" id="includeAnalysis" name="include_analysis">
+                                <label class="form-check-label" for="includeAnalysis">
+                                    Include existing schema analysis
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check mt-4">
+                                <input class="form-check-input" type="checkbox" id="includeReviews" name="include_reviews">
+                                <label class="form-check-label" for="includeReviews">
+                                    Include review data
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-lg" id="generateBtn">
+                                <i class="fas fa-magic me-2"></i>
+                                Generate Schemas
+                            </button>
+                            <div class="loading mt-3" id="loadingIndicator">
+                                <div class="d-flex align-items-center">
+                                    <div class="spinner-border text-primary me-3" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <span class="text-muted">Generating schemas... This may take a few minutes.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <!-- Results Section -->
+        <div class="card" id="resultsCard" style="display: none;">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-check-circle me-2"></i>
+                    Generation Complete
+                </h5>
+            </div>
+            <div class="card-body">
+                <div id="resultsContent">
+                    <!-- Results will be populated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Help Section -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-question-circle me-2"></i>
+                    Need Help?
+                </h5>
+            </div>
+            <div class="card-body">
+                <h6>Getting Your Access Token</h6>
+                <ol class="small">
+                    <li>Go to your Shopify Admin</li>
+                    <li>Navigate to Apps > App and sales channel settings</li>
+                    <li>Click "Develop apps"</li>
+                    <li>Create a new app or select existing</li>
+                    <li>Configure Admin API access</li>
+                    <li>Install the app and copy the access token</li>
+                </ol>
+                
+                <hr>
+                
+                <h6>AI Enhancement</h6>
+                <p class="small text-muted">
+                    Enable AI features to automatically enhance product descriptions and generate 
+                    more comprehensive structured data. Requires an OpenAI API key.
+                </p>
+                
+                <hr>
+                
+                <h6>What's Generated</h6>
+                <ul class="small">
+                    <li>Product schemas (JSON-LD)</li>
+                    <li>Organization schema</li>
+                    <li>Breadcrumb schemas</li>
+                    <li>Review schemas (if enabled)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('generateForm');
+    const generateBtn = document.getElementById('generateBtn');
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    const resultsCard = document.getElementById('resultsCard');
+    const resultsContent = document.getElementById('resultsContent');
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Show loading
+        generateBtn.disabled = true;
+        showLoading(loadingIndicator);
+        resultsCard.style.display = 'none';
+        
+        // Collect form data
+        const formData = new FormData(form);
+        const data = {
+            shop_domain: formData.get('shop_domain'),
+            access_token: formData.get('access_token'),
+            openai_key: formData.get('openai_key'),
+            limit: parseInt(formData.get('limit') || '50'),
+            include_analysis: formData.get('include_analysis') === 'on',
+            enable_ai: formData.get('enable_ai') === 'on',
+            include_reviews: formData.get('include_reviews') === 'on'
+        };
+        
+        try {
+            const response = await fetch('/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                // Display results
+                resultsContent.innerHTML = `
+                    <div class="text-center mb-3">
+                        <i class="fas fa-check-circle text-success" style="font-size: 3rem;"></i>
+                    </div>
+                    <h6 class="text-center text-success">Success!</h6>
+                    <p class="text-center">${result.message}</p>
+                    
+                    <div class="row text-center mb-3">
+                        <div class="col-6">
+                            <div class="bg-light rounded p-2">
+                                <small class="text-muted">Total Schemas</small>
+                                <div class="fw-bold">${result.stats.total_schemas}</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="bg-light rounded p-2">
+                                <small class="text-muted">Shop Name</small>
+                                <div class="fw-bold">${result.stats.shop_name}</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button onclick="downloadFile('${result.filename}')" class="btn btn-success">
+                            <i class="fas fa-download me-2"></i>
+                            Download Schemas
+                        </button>
+                    </div>
+                    <div class="mt-2">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Click to download your generated schemas
+                        </small>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <small class="text-muted">
+                            Generated: ${formatDate(result.stats.generated_at)}
+                        </small>
+                    </div>
+                `;
+                
+                resultsCard.style.display = 'block';
+                showAlert('Schemas generated successfully!', 'success');
+                
+                // Scroll to results
+                resultsCard.scrollIntoView({ behavior: 'smooth' });
+                
+            } else {
+                showAlert(`Error: ${result.error}`, 'danger');
+            }
+            
+        } catch (error) {
+            console.error('Error:', error);
+            showAlert('An unexpected error occurred. Please try again.', 'danger');
+        } finally {
+            // Hide loading
+            generateBtn.disabled = false;
+            hideLoading(loadingIndicator);
+        }
+    });
+    
+    // Download file function
+    window.downloadFile = async function(filename) {
+        try {
+            console.log('Downloading file:', filename);
+            
+            const response = await fetch(`/download/${filename}`);
+            
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Download failed');
+            }
+            
+            // Get the blob from the response
+            const blob = await response.blob();
+            
+            // Create a download link
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = filename;
+            
+            // Trigger download
+            document.body.appendChild(a);
+            a.click();
+            
+            // Cleanup
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+            
+            showAlert('Download started successfully!', 'success');
+            
+        } catch (error) {
+            console.error('Download error:', error);
+            showAlert(`Download failed: ${error.message}`, 'danger');
+        }
+    };
+});
+</script>
+{% endblock %} 

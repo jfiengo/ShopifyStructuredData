@@ -187,18 +187,31 @@ def run_comprehensive_validation(
         collections = schemas.get('collections', [])
         
         for collection in track(collections, description="Validating collections..."):
-            # Basic validation for collection schemas
-            collection_result = {
-                'collection_id': collection.get('collection_id'),
-                'title': collection.get('title', 'Unknown Collection'),
-                'handle': collection.get('handle', ''),
-                'valid': True,
-                'errors': [],
-                'warnings': []
-            }
+            # Handle both old format (direct schema) and new format (with metadata)
+            if collection.get('@type') == 'CollectionPage':
+                # Old format: collection is the schema directly
+                schema_data = collection
+                collection_result = {
+                    'collection_id': None,
+                    'title': collection.get('name', 'Unknown Collection'),
+                    'handle': None,
+                    'valid': True,
+                    'errors': [],
+                    'warnings': []
+                }
+            else:
+                # New format: collection has metadata with schema field
+                collection_result = {
+                    'collection_id': collection.get('collection_id'),
+                    'title': collection.get('title', 'Unknown Collection'),
+                    'handle': collection.get('handle', ''),
+                    'valid': True,
+                    'errors': [],
+                    'warnings': []
+                }
+                schema_data = collection.get('schema', {})
             
             # Basic collection schema validation
-            schema_data = collection.get('schema', {})
             if schema_data:
                 if schema_data.get('@type') != 'CollectionPage':
                     collection_result['errors'].append("Schema type should be 'CollectionPage'")

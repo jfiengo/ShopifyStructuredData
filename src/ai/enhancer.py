@@ -11,9 +11,9 @@ from openai import OpenAI
 import time
 import re
 
-from src.utils.constants import AI_PROMPTS, CATEGORY_MAPPING
-from src.utils.helpers import clean_html, truncate_text
-from src.utils.exceptions import AIEnhancementError
+from utils.constants import AI_PROMPTS, CATEGORY_MAPPING
+from utils.helpers import clean_html, truncate_text
+from utils.exceptions import AIEnhancementError
 
 logger = logging.getLogger(__name__)
 

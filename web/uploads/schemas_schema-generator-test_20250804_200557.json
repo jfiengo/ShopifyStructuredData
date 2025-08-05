@@ -1,0 +1,1487 @@
+{
+  "organization": {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "schema-generator-test",
+    "url": "https://schema-generator-test.myshopify.com",
+    "description": "",
+    "contactPoint": {
+      "email": "n25xz5qbt9@privaterelay.appleid.com",
+      "@type": "ContactPoint",
+      "contactType": "customer service"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": null,
+      "addressLocality": null,
+      "addressRegion": null,
+      "postalCode": null,
+      "addressCountry": "US"
+    }
+  },
+  "products": [
+    {
+      "product_id": 7973706432569,
+      "handle": "gift-card",
+      "title": "Gift Card",
+      "schemas": {
+        "product": {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "Gift Card",
+          "description": "This is a gift card for the store",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/0738/1434/3737/files/gift_card.png?v=1753373542"
+          ],
+          "url": "https://schema-generator-test.myshopify.com/products/gift-card",
+          "brand": {
+            "@type": "Brand",
+            "name": "Snowboard Vendor"
+          },
+          "sku": null,
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "10.00",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/OutOfStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            },
+            {
+              "@type": "Offer",
+              "price": "25.00",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/OutOfStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            },
+            {
+              "@type": "Offer",
+              "price": "50.00",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/OutOfStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            },
+            {
+              "@type": "Offer",
+              "price": "100.00",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/OutOfStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            }
+          ],
+          "category": "Automotive",
+          "hasVariant": [
+            {
+              "@type": "ProductModel",
+              "name": "$10",
+              "sku": null,
+              "offers": {
+                "@type": "Offer",
+                "price": "10.00",
+                "availability": "https://schema.org/OutOfStock"
+              }
+            },
+            {
+              "@type": "ProductModel",
+              "name": "$25",
+              "sku": null,
+              "offers": {
+                "@type": "Offer",
+                "price": "25.00",
+                "availability": "https://schema.org/OutOfStock"
+              }
+            },
+            {
+              "@type": "ProductModel",
+              "name": "$50",
+              "sku": null,
+              "offers": {
+                "@type": "Offer",
+                "price": "50.00",
+                "availability": "https://schema.org/OutOfStock"
+              }
+            },
+            {
+              "@type": "ProductModel",
+              "name": "$100",
+              "sku": null,
+              "offers": {
+                "@type": "Offer",
+                "price": "100.00",
+                "availability": "https://schema.org/OutOfStock"
+              }
+            }
+          ]
+        },
+        "breadcrumb": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://schema-generator-test.myshopify.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Gift Card",
+              "item": "https://schema-generator-test.myshopify.com/products/gift-card"
+            }
+          ]
+        },
+        "faq": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is Gift Card?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "This is a gift card for the store"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "product_id": 7973706563641,
+      "handle": "selling-plans-ski-wax",
+      "title": "Selling Plans Ski Wax",
+      "schemas": {
+        "product": {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "Selling Plans Ski Wax",
+          "description": "",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/0738/1434/3737/files/snowboard_wax.png?v=1753373543",
+            "https://cdn.shopify.com/s/files/1/0738/1434/3737/files/wax-special.png?v=1753373543",
+            "https://cdn.shopify.com/s/files/1/0738/1434/3737/files/sample-normal-wax.png?v=1753373542"
+          ],
+          "url": "https://schema-generator-test.myshopify.com/products/selling-plans-ski-wax",
+          "brand": {
+            "@type": "Brand",
+            "name": "schema-generator-test"
+          },
+          "sku": null,
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "24.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            },
+            {
+              "@type": "Offer",
+              "price": "49.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            },
+            {
+              "@type": "Offer",
+              "price": "9.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            }
+          ],
+          "category": "Apparel & Accessories",
+          "hasVariant": [
+            {
+              "@type": "ProductModel",
+              "name": "Selling Plans Ski Wax",
+              "sku": null,
+              "offers": {
+                "@type": "Offer",
+                "price": "24.95",
+                "availability": "https://schema.org/InStock"
+              }
+            },
+            {
+              "@type": "ProductModel",
+              "name": "Special Selling Plans Ski Wax",
+              "sku": null,
+              "offers": {
+                "@type": "Offer",
+                "price": "49.95",
+                "availability": "https://schema.org/InStock"
+              }
+            },
+            {
+              "@type": "ProductModel",
+              "name": "Sample Selling Plans Ski Wax",
+              "sku": null,
+              "offers": {
+                "@type": "Offer",
+                "price": "9.95",
+                "availability": "https://schema.org/InStock"
+              }
+            }
+          ],
+          "weight": {
+            "@type": "QuantitativeValue",
+            "value": 2.0,
+            "unitCode": "oz"
+          }
+        },
+        "breadcrumb": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://schema-generator-test.myshopify.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Selling Plans Ski Wax",
+              "item": "https://schema-generator-test.myshopify.com/products/selling-plans-ski-wax"
+            }
+          ]
+        },
+        "faq": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is Selling Plans Ski Wax?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "product_id": 7973706924089,
+      "handle": "the-3p-fulfilled-snowboard",
+      "title": "The 3p Fulfilled Snowboard",
+      "schemas": {
+        "product": {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "The 3p Fulfilled Snowboard",
+          "description": "",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/0738/1434/3737/files/Main_b9e0da7f-db89-4d41-83f0-7f417b02831d.jpg?v=1753373543"
+          ],
+          "url": "https://schema-generator-test.myshopify.com/products/the-3p-fulfilled-snowboard",
+          "brand": {
+            "@type": "Brand",
+            "name": "schema-generator-test"
+          },
+          "sku": "sku-hosted-1",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "2629.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": "sku-hosted-1",
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            }
+          ],
+          "category": "Other"
+        },
+        "breadcrumb": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://schema-generator-test.myshopify.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "The 3p Fulfilled Snowboard",
+              "item": "https://schema-generator-test.myshopify.com/products/the-3p-fulfilled-snowboard"
+            }
+          ]
+        },
+        "faq": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is The 3p Fulfilled Snowboard?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "product_id": 7973706530873,
+      "handle": "the-archived-snowboard",
+      "title": "The Archived Snowboard",
+      "schemas": {
+        "product": {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "The Archived Snowboard",
+          "description": "",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/0738/1434/3737/files/Main_52f8e304-92d9-4a36-82af-50df8fe31c69.jpg?v=1753373542"
+          ],
+          "url": "https://schema-generator-test.myshopify.com/products/the-archived-snowboard",
+          "brand": {
+            "@type": "Brand",
+            "name": "Snowboard Vendor"
+          },
+          "sku": null,
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "629.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            }
+          ],
+          "category": "Other"
+        },
+        "breadcrumb": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://schema-generator-test.myshopify.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "The Archived Snowboard",
+              "item": "https://schema-generator-test.myshopify.com/products/the-archived-snowboard"
+            }
+          ]
+        },
+        "faq": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is The Archived Snowboard?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "product_id": 7973706694713,
+      "handle": "the-collection-snowboard-hydrogen",
+      "title": "The Collection Snowboard: Hydrogen",
+      "schemas": {
+        "product": {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "The Collection Snowboard: Hydrogen",
+          "description": "",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/0738/1434/3737/files/Main_0a40b01b-5021-48c1-80d1-aa8ab4876d3d.jpg?v=1753373542"
+          ],
+          "url": "https://schema-generator-test.myshopify.com/products/the-collection-snowboard-hydrogen",
+          "brand": {
+            "@type": "Brand",
+            "name": "Hydrogen Vendor"
+          },
+          "sku": null,
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "600.00",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            }
+          ],
+          "category": "Other"
+        },
+        "breadcrumb": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://schema-generator-test.myshopify.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "The Collection Snowboard: Hydrogen",
+              "item": "https://schema-generator-test.myshopify.com/products/the-collection-snowboard-hydrogen"
+            }
+          ]
+        },
+        "faq": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is The Collection Snowboard: Hydrogen?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "product_id": 7973706858553,
+      "handle": "the-collection-snowboard-liquid",
+      "title": "The Collection Snowboard: Liquid",
+      "schemas": {
+        "product": {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "The Collection Snowboard: Liquid",
+          "description": "",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/0738/1434/3737/files/Main_b13ad453-477c-4ed1-9b43-81f3345adfd6.jpg?v=1753373543"
+          ],
+          "url": "https://schema-generator-test.myshopify.com/products/the-collection-snowboard-liquid",
+          "brand": {
+            "@type": "Brand",
+            "name": "Hydrogen Vendor"
+          },
+          "sku": null,
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "749.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            }
+          ],
+          "category": "Other"
+        },
+        "breadcrumb": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://schema-generator-test.myshopify.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "The Collection Snowboard: Liquid",
+              "item": "https://schema-generator-test.myshopify.com/products/the-collection-snowboard-liquid"
+            }
+          ]
+        },
+        "faq": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is The Collection Snowboard: Liquid?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "product_id": 7973706793017,
+      "handle": "the-collection-snowboard-oxygen",
+      "title": "The Collection Snowboard: Oxygen",
+      "schemas": {
+        "product": {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "The Collection Snowboard: Oxygen",
+          "description": "",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/0738/1434/3737/files/Main_d624f226-0a89-4fe1-b333-0d1548b43c06.jpg?v=1753373542"
+          ],
+          "url": "https://schema-generator-test.myshopify.com/products/the-collection-snowboard-oxygen",
+          "brand": {
+            "@type": "Brand",
+            "name": "Hydrogen Vendor"
+          },
+          "sku": null,
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "1025.00",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            }
+          ],
+          "category": "Other"
+        },
+        "breadcrumb": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://schema-generator-test.myshopify.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "The Collection Snowboard: Oxygen",
+              "item": "https://schema-generator-test.myshopify.com/products/the-collection-snowboard-oxygen"
+            }
+          ]
+        },
+        "faq": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is The Collection Snowboard: Oxygen?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "product_id": 7973706727481,
+      "handle": "the-compare-at-price-snowboard",
+      "title": "The Compare at Price Snowboard",
+      "schemas": {
+        "product": {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "The Compare at Price Snowboard",
+          "description": "",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/0738/1434/3737/files/snowboard_sky.png?v=1753373543"
+          ],
+          "url": "https://schema-generator-test.myshopify.com/products/the-compare-at-price-snowboard",
+          "brand": {
+            "@type": "Brand",
+            "name": "schema-generator-test"
+          },
+          "sku": null,
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "785.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            }
+          ],
+          "category": "Other"
+        },
+        "breadcrumb": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://schema-generator-test.myshopify.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "The Compare at Price Snowboard",
+              "item": "https://schema-generator-test.myshopify.com/products/the-compare-at-price-snowboard"
+            }
+          ]
+        },
+        "faq": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is The Compare at Price Snowboard?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "product_id": 7973706629177,
+      "handle": "the-complete-snowboard",
+      "title": "The Complete Snowboard",
+      "schemas": {
+        "product": {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "The Complete Snowboard",
+          "description": "This PREMIUM snowboard is so SUPERDUPER awesome!",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/0738/1434/3737/files/Main_589fc064-24a2-4236-9eaf-13b2bd35d21d.jpg?v=1753373542"
+          ],
+          "url": "https://schema-generator-test.myshopify.com/products/the-complete-snowboard",
+          "brand": {
+            "@type": "Brand",
+            "name": "Snowboard Vendor"
+          },
+          "sku": null,
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "699.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            },
+            {
+              "@type": "Offer",
+              "price": "699.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            },
+            {
+              "@type": "Offer",
+              "price": "699.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            },
+            {
+              "@type": "Offer",
+              "price": "699.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            },
+            {
+              "@type": "Offer",
+              "price": "699.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            }
+          ],
+          "category": "Other",
+          "hasVariant": [
+            {
+              "@type": "ProductModel",
+              "name": "Ice",
+              "sku": null,
+              "offers": {
+                "@type": "Offer",
+                "price": "699.95",
+                "availability": "https://schema.org/InStock"
+              }
+            },
+            {
+              "@type": "ProductModel",
+              "name": "Dawn",
+              "sku": null,
+              "offers": {
+                "@type": "Offer",
+                "price": "699.95",
+                "availability": "https://schema.org/InStock"
+              }
+            },
+            {
+              "@type": "ProductModel",
+              "name": "Powder",
+              "sku": null,
+              "offers": {
+                "@type": "Offer",
+                "price": "699.95",
+                "availability": "https://schema.org/InStock"
+              }
+            },
+            {
+              "@type": "ProductModel",
+              "name": "Electric",
+              "sku": null,
+              "offers": {
+                "@type": "Offer",
+                "price": "699.95",
+                "availability": "https://schema.org/InStock"
+              }
+            },
+            {
+              "@type": "ProductModel",
+              "name": "Sunset",
+              "sku": null,
+              "offers": {
+                "@type": "Offer",
+                "price": "699.95",
+                "availability": "https://schema.org/InStock"
+              }
+            }
+          ],
+          "weight": {
+            "@type": "QuantitativeValue",
+            "value": 10.0,
+            "unitCode": "lb"
+          }
+        },
+        "breadcrumb": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://schema-generator-test.myshopify.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "The Complete Snowboard",
+              "item": "https://schema-generator-test.myshopify.com/products/the-complete-snowboard"
+            }
+          ]
+        },
+        "faq": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is The Complete Snowboard?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "This PREMIUM snowboard is so SUPERDUPER awesome!"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "product_id": 7973706760249,
+      "handle": "the-draft-snowboard",
+      "title": "The Draft Snowboard",
+      "schemas": {
+        "product": {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "The Draft Snowboard",
+          "description": "",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/0738/1434/3737/files/Main_5127218a-8f6c-498f-b489-09242c0fab0a.jpg?v=1753373542"
+          ],
+          "url": "https://schema-generator-test.myshopify.com/products/the-draft-snowboard",
+          "brand": {
+            "@type": "Brand",
+            "name": "Snowboard Vendor"
+          },
+          "sku": null,
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "2629.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            }
+          ],
+          "category": "Other"
+        },
+        "breadcrumb": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://schema-generator-test.myshopify.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "The Draft Snowboard",
+              "item": "https://schema-generator-test.myshopify.com/products/the-draft-snowboard"
+            }
+          ]
+        },
+        "faq": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is The Draft Snowboard?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "product_id": 7973706498105,
+      "handle": "the-hidden-snowboard",
+      "title": "The Hidden Snowboard",
+      "schemas": {
+        "product": {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "The Hidden Snowboard",
+          "description": "",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/0738/1434/3737/files/Main_c8ff0b5d-c712-429a-be00-b29bd55cbc9d.jpg?v=1753373542"
+          ],
+          "url": "https://schema-generator-test.myshopify.com/products/the-hidden-snowboard",
+          "brand": {
+            "@type": "Brand",
+            "name": "Snowboard Vendor"
+          },
+          "sku": null,
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "749.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            }
+          ],
+          "category": "Other"
+        },
+        "breadcrumb": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://schema-generator-test.myshopify.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "The Hidden Snowboard",
+              "item": "https://schema-generator-test.myshopify.com/products/the-hidden-snowboard"
+            }
+          ]
+        },
+        "faq": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is The Hidden Snowboard?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "product_id": 7973706399801,
+      "handle": "the-inventory-not-tracked-snowboard",
+      "title": "The Inventory Not Tracked Snowboard",
+      "schemas": {
+        "product": {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "The Inventory Not Tracked Snowboard",
+          "description": "",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/0738/1434/3737/files/snowboard_purple_hydrogen.png?v=1753373543"
+          ],
+          "url": "https://schema-generator-test.myshopify.com/products/the-inventory-not-tracked-snowboard",
+          "brand": {
+            "@type": "Brand",
+            "name": "schema-generator-test"
+          },
+          "sku": "sku-untracked-1",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "949.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/OutOfStock",
+              "sku": "sku-untracked-1",
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            }
+          ],
+          "category": "Other"
+        },
+        "breadcrumb": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://schema-generator-test.myshopify.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "The Inventory Not Tracked Snowboard",
+              "item": "https://schema-generator-test.myshopify.com/products/the-inventory-not-tracked-snowboard"
+            }
+          ]
+        },
+        "faq": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is The Inventory Not Tracked Snowboard?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "product_id": 7973706465337,
+      "handle": "the-minimal-snowboard",
+      "title": "The Minimal Snowboard",
+      "schemas": {
+        "product": {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "The Minimal Snowboard",
+          "description": "",
+          "image": [],
+          "url": "https://schema-generator-test.myshopify.com/products/the-minimal-snowboard",
+          "brand": {
+            "@type": "Brand",
+            "name": "schema-generator-test"
+          },
+          "sku": null,
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "885.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            }
+          ],
+          "category": "Other"
+        },
+        "breadcrumb": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://schema-generator-test.myshopify.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "The Minimal Snowboard",
+              "item": "https://schema-generator-test.myshopify.com/products/the-minimal-snowboard"
+            }
+          ]
+        },
+        "faq": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is The Minimal Snowboard?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "product_id": 7973706825785,
+      "handle": "the-multi-location-snowboard",
+      "title": "The Multi-location Snowboard",
+      "schemas": {
+        "product": {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "The Multi-location Snowboard",
+          "description": "",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/0738/1434/3737/files/Main_0a4e9096-021a-4c1e-8750-24b233166a12.jpg?v=1753373542"
+          ],
+          "url": "https://schema-generator-test.myshopify.com/products/the-multi-location-snowboard",
+          "brand": {
+            "@type": "Brand",
+            "name": "schema-generator-test"
+          },
+          "sku": null,
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "729.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            }
+          ],
+          "category": "Other"
+        },
+        "breadcrumb": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://schema-generator-test.myshopify.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "The Multi-location Snowboard",
+              "item": "https://schema-generator-test.myshopify.com/products/the-multi-location-snowboard"
+            }
+          ]
+        },
+        "faq": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is The Multi-location Snowboard?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "product_id": 7973706891321,
+      "handle": "the-multi-managed-snowboard",
+      "title": "The Multi-managed Snowboard",
+      "schemas": {
+        "product": {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "The Multi-managed Snowboard",
+          "description": "",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/0738/1434/3737/files/Main_9129b69a-0c7b-4f66-b6cf-c4222f18028a.jpg?v=1753373543"
+          ],
+          "url": "https://schema-generator-test.myshopify.com/products/the-multi-managed-snowboard",
+          "brand": {
+            "@type": "Brand",
+            "name": "Multi-managed Vendor"
+          },
+          "sku": "sku-managed-1",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "629.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": "sku-managed-1",
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            }
+          ],
+          "category": "Other"
+        },
+        "breadcrumb": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://schema-generator-test.myshopify.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "The Multi-managed Snowboard",
+              "item": "https://schema-generator-test.myshopify.com/products/the-multi-managed-snowboard"
+            }
+          ]
+        },
+        "faq": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is The Multi-managed Snowboard?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "product_id": 7973706596409,
+      "handle": "the-out-of-stock-snowboard",
+      "title": "The Out of Stock Snowboard",
+      "schemas": {
+        "product": {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "The Out of Stock Snowboard",
+          "description": "",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/0738/1434/3737/files/Main_f44a9605-cd62-464d-b095-d45cdaa0d0d7.jpg?v=1753373543"
+          ],
+          "url": "https://schema-generator-test.myshopify.com/products/the-out-of-stock-snowboard",
+          "brand": {
+            "@type": "Brand",
+            "name": "schema-generator-test"
+          },
+          "sku": null,
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "885.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/OutOfStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            }
+          ],
+          "category": "Other"
+        },
+        "breadcrumb": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://schema-generator-test.myshopify.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "The Out of Stock Snowboard",
+              "item": "https://schema-generator-test.myshopify.com/products/the-out-of-stock-snowboard"
+            }
+          ]
+        },
+        "faq": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is The Out of Stock Snowboard?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "product_id": 7973706661945,
+      "handle": "the-videographer-snowboard",
+      "title": "The Videographer Snowboard",
+      "schemas": {
+        "product": {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "The Videographer Snowboard",
+          "description": "",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/0738/1434/3737/files/Main.jpg?v=1753373542"
+          ],
+          "url": "https://schema-generator-test.myshopify.com/products/the-videographer-snowboard",
+          "brand": {
+            "@type": "Brand",
+            "name": "schema-generator-test"
+          },
+          "sku": null,
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "885.95",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "sku": null,
+              "priceValidUntil": "2026-01-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "schema-generator-test"
+              }
+            }
+          ],
+          "category": "Other"
+        },
+        "breadcrumb": {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://schema-generator-test.myshopify.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "The Videographer Snowboard",
+              "item": "https://schema-generator-test.myshopify.com/products/the-videographer-snowboard"
+            }
+          ]
+        },
+        "faq": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is The Videographer Snowboard?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": ""
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "collections": [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Home page",
+      "description": "",
+      "url": "https://schema-generator-test.myshopify.com/collections/frontpage",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "schema-generator-test",
+        "url": "https://schema-generator-test.myshopify.com"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Hydrogen",
+      "description": "",
+      "url": "https://schema-generator-test.myshopify.com/collections/hydrogen",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "schema-generator-test",
+        "url": "https://schema-generator-test.myshopify.com"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Automated Collection",
+      "description": "",
+      "url": "https://schema-generator-test.myshopify.com/collections/automated-collection",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "schema-generator-test",
+        "url": "https://schema-generator-test.myshopify.com"
+      }
+    }
+  ],
+  "generated_at": "2025-08-04T20:05:57.173959",
+  "shop_domain": "schema-generator-test",
+  "total_products": 17,
+  "config": {
+    "ai_enabled": false,
+    "include_faq": true,
+    "include_reviews": false
+  }
+}
