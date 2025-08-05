@@ -22,8 +22,10 @@ class TestAIEnhancer:
     
     def test_enhancer_initialization_without_key(self):
         """Test initialization without API key raises error"""
-        with pytest.raises(AIEnhancementError, match="OpenAI API key is required"):
+        # Test that the exception is raised with the correct message
+        with pytest.raises(AIEnhancementError) as exc_info:
             AIEnhancer("")
+        assert "OpenAI API key is required" in str(exc_info.value)
     
     @patch('src.ai.enhancer.OpenAI')
     def test_enhance_description_success(self, mock_openai, sample_product):

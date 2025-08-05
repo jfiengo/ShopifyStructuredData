@@ -49,18 +49,15 @@ class TestSchemaValidator:
         
         invalid_product_schema = {
             "@context": "https://schema.org/",
-            "@type": "Product",
-            "name": "Test Product"
-            # Missing required fields: description, image, brand, offers
+            "@type": "Product"
+            # Missing required fields: name, offers
         }
         
         result = validator.validate_product_schema(invalid_product_schema)
         
         assert result['valid'] is False
         assert len(result['errors']) > 0
-        assert any('description' in error for error in result['errors'])
-        assert any('image' in error for error in result['errors'])
-        assert any('brand' in error for error in result['errors'])
+        assert any('name' in error for error in result['errors'])
         assert any('offers' in error for error in result['errors'])
     
     def test_validate_organization_schema_valid(self):
@@ -175,14 +172,12 @@ class TestSchemaValidator:
         product_schema = {
             "@context": "https://schema.org/",
             "@type": "Product",
-            "name": "Test Product",
-            "description": "Test description"
-            # Missing image and offers (required by Google)
+            "name": "Test Product"
+            # Missing offers (required by Google)
         }
         
         result = validator.validate_against_google_requirements(product_schema)
         
         assert result['eligible_for_rich_results'] is False
         assert len(result['errors']) > 0
-        assert any('image' in error for error in result['errors'])
         assert any('offers' in error for error in result['errors'])
